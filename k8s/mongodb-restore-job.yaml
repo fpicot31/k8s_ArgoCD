@@ -12,7 +12,7 @@ spec:
             secretName: gcs-credentials
       containers:
         - name: 'mongodb-backup'
-          image: 'dymafr/backupmongodbgcs'
+          image: 'atos06/backupmongodbgcs'
           command:
             - '/bin/sh'
             - '-c'
@@ -20,7 +20,7 @@ spec:
               echo "Atuhentification sur GCS..."
               gcloud auth activate-service-account --key-file=/etc/gcs-credentials/service-account.json
               echo "Téléchargement du dump"
-              gsutil cp -r gs://backup-mongodb-dyma/dump.gz /tmp/dump.gz
+              gsutil cp -r gs://backup-mongodb-cformidable/dump.gz /tmp/dump.gz
               echo "Décompression du dump"
               gunzip /tmp/dump.gz
               echo "Restauration de la base de données"

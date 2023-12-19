@@ -4,5 +4,5 @@ metadata:
   name: managed-cert
 spec:
   domains:
-   - nginx-dyma.fr
-   - www.nginx-dyma.fr
+   - nginx-cformidable.fr
+   - www.nginx-cformidable.fr
