@@ -1,3 +1,5 @@
+#### installer argo ####
+
 kubectl create namespace argocd
 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -12,6 +14,9 @@ rm argocd-linux-amd64
 # argocd fonctionne
 argocd
 
+
+### creer premiere applicaiton argo """
+
 # ouvvri l'appli dans le navigateur
 kubectl port-forward  -n argocd services/argocd-server 8080:443
 argocd admin initial-password -n argocd
@@ -19,6 +24,15 @@ https://localhost:8080  // login : admin
 
 # recuperer le mot de password
 kubectl get secrets -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+# creer l'application
+cd projet-ArgoCD/k8s
+kubectl apply -f application.yaml 
+
+# Ouvrir le dashboard : voir les logs, les evts, etc
+# on peut faire un test en supprimant un service
+kubectl delete service/frontend-service 
+# on voit qu il est immediatment recreer
 
 
 
